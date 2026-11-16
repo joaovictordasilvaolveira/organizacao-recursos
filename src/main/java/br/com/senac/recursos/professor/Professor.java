@@ -24,6 +24,10 @@ public class Professor {
     @Column(nullable = false, length = 120)
     private String competencia;
 
+    /** Definido fora da API (V7); só leitura aqui. */
+    @Column(name = "restrito", insertable = false, updatable = false)
+    private boolean restrito;
+
     protected Professor() {
     }
 
@@ -48,5 +52,9 @@ public class Professor {
 
     public String getCompetencia() {
         return competencia;
+    }
+
+    public boolean isRestrito() {
+        return restrito;
     }
 }

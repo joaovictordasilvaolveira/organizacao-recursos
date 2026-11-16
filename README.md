@@ -22,6 +22,18 @@ docker compose up -d
 
 Verifique `http://localhost:8080/api/v1/status` e `http://localhost:8080/actuator/health`.
 
+### Interface web
+
+Com a aplicação no ar, abra `http://localhost:8080/` e entre com e-mail e senha. As abas mudam conforme o perfil:
+
+| Perfil | O que a tela faz |
+|---|---|
+| Solicitante | solicita, edita e cancela as próprias reservas; consulta o catálogo |
+| Responsável | aprova ou rejeita pedidos, registra retirada e devolução, gera o relatório |
+| Administrador | cadastra salas, professores e materiais, marca manutenção, altera e cancela reservas, gera o relatório |
+
+São páginas estáticas servidas pela própria API (`src/main/resources/static`), sem Node nem build extra. Segurança da tela: [ADR 0006](docs/adr/0006-csrf-em-api-stateless.md). Evidências: [docs/evidencias/interface-web](docs/evidencias/interface-web/README.md).
+
 ### Administrador local
 
 Os demais endpoints exigem login. Para criar um Administrador na primeira execução, defina as variáveis no terminal antes de subir a aplicação (use valores próprios e não os versione):

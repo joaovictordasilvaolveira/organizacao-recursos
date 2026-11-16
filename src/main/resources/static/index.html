@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organização de Recursos</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="app.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <div class="marca">
+      <span class="logo" aria-hidden="true">▦</span>
+      <span>Organização de Recursos</span>
+    </div>
+    <div class="sessao" id="sessao" hidden>
+      <span id="usuario-nome"></span>
+      <span class="selo" id="usuario-perfil"></span>
+      <button type="button" class="botao secundario" id="sair">Sair</button>
+    </div>
+  </header>
+
+  <div class="aviso" id="aviso" role="alert" hidden></div>
+
+  <main id="conteudo">
+    <section id="tela-login" class="login" aria-labelledby="titulo-login">
+      <h1 id="titulo-login">Entrar</h1>
+      <p class="apoio">Use o e-mail e a senha cadastrados para o seu perfil.</p>
+      <form id="form-login" class="formulario" novalidate>
+        <label>E-mail
+          <input type="email" name="email" autocomplete="username" required>
+        </label>
+        <label>Senha
+          <input type="password" name="senha" autocomplete="current-password" required>
+        </label>
+        <button type="submit" class="botao">Entrar</button>
+      </form>
+    </section>
+
+    <section id="tela-app" hidden>
+      <nav class="abas" role="tablist" aria-label="Seções" id="abas"></nav>
+      <div id="painel" class="painel" role="tabpanel" tabindex="-1"></div>
+    </section>
+  </main>
+</body>
+</html>

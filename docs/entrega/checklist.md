@@ -14,6 +14,7 @@ Ambiente: Windows 11, OpenJDK 21.0.7, Docker Desktop 29.8 (PostgreSQL 17 pelo `c
 |---|---|---|---|
 | Repositório revisado por pares | sim | sim: as mudanças entraram por PR (#2 a #24) com revisão de outro integrante | [pull requests](https://github.com/joaovictordasilvaolveira/organizacao-recursos/pulls?q=is%3Apr+is%3Amerged) |
 | Aplicação executável | sim | sim: subiu no clone limpo | `src/`, `compose.yaml`, [README](../../README.md) |
+| Interface web (rc3) | sim | criada em 16/11/2026: abre em `http://localhost:8080/` | [README](../../README.md#interface-web), [roteiro no navegador](../evidencias/interface-web/README.md) |
 | README | sim | sim: passos reproduzidos sem ajuste | [README.md](../../README.md) |
 | Documentação da API | sim | sim | [docs/contratos/](../contratos/) |
 | RTM | sim | sim: RF-01 a RF-14 com teste e evidência | [docs/rtm.md](../rtm.md) |
