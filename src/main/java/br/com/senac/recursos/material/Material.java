@@ -27,6 +27,14 @@ public class Material {
     @Column(nullable = false)
     private int quantidade;
 
+    /** Definido fora da API (V7); só leitura aqui. */
+    @Column(name = "restrito", insertable = false, updatable = false)
+    private boolean restrito;
+
+    /** Alterado pelo ManutencaoController (RF-08, V9); só leitura aqui. */
+    @Column(name = "em_manutencao", insertable = false, updatable = false)
+    private boolean emManutencao;
+
     protected Material() {
     }
 
@@ -56,5 +64,13 @@ public class Material {
 
     public int getQuantidade() {
         return quantidade;
+    }
+
+    public boolean isRestrito() {
+        return restrito;
+    }
+
+    public boolean isEmManutencao() {
+        return emManutencao;
     }
 }

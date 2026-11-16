@@ -36,7 +36,12 @@ public class RespostaAcessoNegado implements AuthenticationEntryPoint, AccessDen
             HttpServletRequest request,
             HttpServletResponse response,
             AuthenticationException exception) throws IOException {
-        response.setHeader(HttpHeaders.WWW_AUTHENTICATE, "Basic realm=\"organizacao-recursos\"");
+        // A interface web (RF-15) manda X-Requested-With: sem o desafio Basic, o
+        // navegador não abre a própria janela de login nem guarda a senha, que
+        // depois seria reenviada sozinha (risco de CSRF do ADR 0006).
+        if (!"XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+            response.setHeader(HttpHeaders.WWW_AUTHENTICATE, "Basic realm=\"organizacao-recursos\"");
+        }
         escrever(response, HttpStatus.UNAUTHORIZED, NAO_AUTENTICADO);
     }
 
