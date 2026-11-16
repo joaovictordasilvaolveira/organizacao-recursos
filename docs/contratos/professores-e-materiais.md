@@ -67,3 +67,7 @@ A pesquisa por disponibilidade e intervalo de tempo ainda não está implementad
 ## Dependência de migration
 
 A migration `V3__professores_e_materiais.sql` pressupõe que a migration `V2__salas.sql` da PR #2 seja aplicada antes. Para manter a ordem do Flyway, a PR #2 deve ser mesclada antes desta contribuição.
+
+## Situação do recurso (RF-15)
+
+As respostas trazem também `restrito` (reserva precisa de aprovação, RF-07) e, para salas e materiais, `emManutencao` (reserva é recusada, RF-08). Os dois são só leitura: `restrito` vem do banco (V7) e `emManutencao` muda por `PUT …/{id}/manutencao`. Um cadastro novo nasce com os dois `false`.

@@ -33,3 +33,7 @@ Retorna `201 Created`, o recurso cadastrado e o cabeçalho `Location` para consu
 Exemplo: `GET /api/v1/salas?tipo=laboratorio&capacidadeMinima=30&localizacao=bloco` retorna apenas salas compatíveis com os três critérios. Filtros textuais em branco são ignorados. Cada resposta contém `id`, `codigo`, `tipo`, `capacidade` e `localizacao`.
 
 O filtro por disponibilidade e período ainda não está implementado: requer integração com o fluxo de reservas. Ele continua pendente no RF-03.
+
+## Situação do recurso (RF-15)
+
+As respostas trazem também `restrito` (reserva precisa de aprovação, RF-07) e, para salas e materiais, `emManutencao` (reserva é recusada, RF-08). Os dois são só leitura: `restrito` vem do banco (V7) e `emManutencao` muda por `PUT …/{id}/manutencao`. Um cadastro novo nasce com os dois `false`.

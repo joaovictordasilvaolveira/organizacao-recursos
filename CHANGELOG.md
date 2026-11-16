@@ -1,5 +1,27 @@
 # Changelog
 
+## [v1.0.0-rc3] — 16/11/2026
+
+### Novo: interface web (RF-15)
+
+- Telas em `http://localhost:8080/`, servidas pela própria API (HTML, CSS e JavaScript puro, sem build extra):
+  - **Solicitante:** pede, edita e cancela as próprias reservas e consulta o catálogo.
+  - **Responsável:** aprova ou rejeita pedidos, registra retirada e devolução e gera o relatório de utilização.
+  - **Administrador:** cadastra salas, professores e materiais, marca manutenção, altera e cancela reservas e gera o relatório.
+- `GET /api/v1/reservas`: o Solicitante vê só as próprias reservas; Responsável e Administrador veem todas; filtro por estado.
+- Salas, professores e materiais passam a informar `restrito`; salas e materiais também `emManutencao`.
+
+### Segurança
+
+- As páginas são públicas, mas os dados continuam exigindo login. A CSP só permite script e estilo do próprio servidor.
+- O 401 das chamadas da tela não traz `WWW-Authenticate`, para o navegador não guardar a senha ([ADR 0006](docs/adr/0006-csrf-em-api-stateless.md) atualizado).
+
+### Qualidade
+
+- 242 testes, 0 pulados; cobertura de 98,6% das linhas e 91,3% dos branches.
+- Roteiro no navegador com os três perfis, incluindo um cadastro malicioso exibido como texto ([evidências](docs/evidencias/interface-web/README.md)).
+- Defeitos D-10 e D-11, achados no teste do navegador, corrigidos antes do merge.
+
 ## [v1.0.0-rc2] — 12/11/2026
 
 ### Correção

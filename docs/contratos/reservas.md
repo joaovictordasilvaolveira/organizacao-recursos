@@ -53,3 +53,32 @@ Fora do escopo: regra de horário (retirar antes do início ou devolver após o 
 
 - `POST /api/v1/reservas/{id}/rejeitar` (somente Responsável): `SOLICITADA` → `REJEITADA`, libera o horário e retorna `200`. Outro estado retorna `409`; outro perfil, `403`.
 - Aprovação e rejeição publicam uma `Notificacao` (`RESERVA_APROVADA` ou `RESERVA_REJEITADA`) para o solicitante. O envio ao provedor acontece só depois do commit, em segundo plano ([contrato da notificação](notificacao.md)).
+
+## Listagem (RF-15)
+
+`GET /api/v1/reservas?estado=SOLICITADA` (o filtro `estado` é opcional)
+
+- **Solicitante:** vê só as próprias reservas.
+- **Responsável e Administrador:** veem todas.
+- Até 200 reservas, as mais recentes primeiro.
+- Estado inválido retorna `400`; sem login, `401`.
+
+```json
+[
+  {
+    "id": "…",
+    "solicitanteId": "…",
+    "solicitante": "Ana Souza",
+    "inicio": "2026-11-20T11:00:00Z",
+    "fim": "2026-11-20T13:00:00Z",
+    "estado": "APROVADA",
+    "recursos": [
+      {"tipo": "SALA", "id": "…", "codigo": "A-101"},
+      {"tipo": "PROFESSOR", "id": "…", "codigo": "P-02"},
+      {"tipo": "MATERIAL", "id": "…", "codigo": "PROJ-1"}
+    ]
+  }
+]
+```
+
+Reservas canceladas e rejeitadas continuam listadas com os recursos, para histórico.
